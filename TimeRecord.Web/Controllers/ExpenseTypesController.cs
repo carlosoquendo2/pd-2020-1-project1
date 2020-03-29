@@ -19,13 +19,11 @@ namespace TimeRecord.Web.Controllers
             _context = context;
         }
 
-        // GET: ExpenseTypes
         public async Task<IActionResult> Index()
         {
             return View(await _context.ExpenseTypes.ToListAsync());
         }
 
-        // GET: ExpenseTypes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,15 +41,11 @@ namespace TimeRecord.Web.Controllers
             return View(expenseTypeEntity);
         }
 
-        // GET: ExpenseTypes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: ExpenseTypes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Active")] ExpenseTypeEntity expenseTypeEntity)
@@ -65,7 +59,6 @@ namespace TimeRecord.Web.Controllers
             return View(expenseTypeEntity);
         }
 
-        // GET: ExpenseTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,9 +74,6 @@ namespace TimeRecord.Web.Controllers
             return View(expenseTypeEntity);
         }
 
-        // POST: ExpenseTypes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Active")] ExpenseTypeEntity expenseTypeEntity)
@@ -116,7 +106,6 @@ namespace TimeRecord.Web.Controllers
             return View(expenseTypeEntity);
         }
 
-        // GET: ExpenseTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -131,15 +120,6 @@ namespace TimeRecord.Web.Controllers
                 return NotFound();
             }
 
-            return View(expenseTypeEntity);
-        }
-
-        // POST: ExpenseTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var expenseTypeEntity = await _context.ExpenseTypes.FindAsync(id);
             _context.ExpenseTypes.Remove(expenseTypeEntity);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
