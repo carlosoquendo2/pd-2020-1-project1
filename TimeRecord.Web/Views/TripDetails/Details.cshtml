@@ -1,0 +1,54 @@
+﻿@model TimeRecord.Web.Data.Entities.TripDetailEntity
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TripDetailEntity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Expense)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Expense)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Currency)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Currency)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AttachmentPath)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AttachmentPath)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

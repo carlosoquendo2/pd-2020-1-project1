@@ -1,0 +1,83 @@
+﻿@model IEnumerable<TimeRecord.Web.Data.Entities.TripDetailEntity>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Trip Deteils</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Trip Deteils</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="MyTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Expense)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Currency)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Comment)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AttachmentPath)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Expense)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Currency)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Comment)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AttachmentPath)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable();
+        });
+    </script>
+}
