@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TimeRecord.Web.Data;
 using TimeRecord.Web.Data.Entities;
+using TimeRecord.Web.Helpers;
+using TimeRecord.Web.Models;
 
 namespace TimeRecord.Web.Controllers
 {
@@ -14,9 +16,14 @@ namespace TimeRecord.Web.Controllers
     {
         private readonly DataContext _context;
 
-        public TripDetailsController(DataContext context)
+        public IImageHelper _imageHelper { get; }
+        public IConverterHelper _converterHelper { get; }
+
+        public TripDetailsController(DataContext context, IImageHelper imageHelper, IConverterHelper converterHelper)
         {
             _context = context;
+            _imageHelper = imageHelper;
+            _converterHelper = converterHelper;
         }
 
         public async Task<IActionResult> Index()
@@ -48,15 +55,23 @@ namespace TimeRecord.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Expense,Currency,Comment,AttachmentPath,Date")] TripDetailEntity tripDetailEntity)
+        public async Task<IActionResult> Create(TripDetailViewModel tripDetailViewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tripDetailEntity);
+                var path = string.Empty;
+
+                if (tripDetailViewModel.VoucherFile != null)
+                {
+                    path = await _imageHelper.UploadImageAsync(tripDetailViewModel.VoucherFile, "Vouchers");
+                }
+
+
+                _context.Add(_converterHelper.ToTripDetailEntity(tripDetailViewModel, path, true));
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(tripDetailEntity);
+            return View(tripDetailViewModel);
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -71,14 +86,14 @@ namespace TimeRecord.Web.Controllers
             {
                 return NotFound();
             }
-            return View(tripDetailEntity);
+            return View(_converterHelper.ToTripDetailModel(tripDetailEntity));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Expense,Currency,Comment,AttachmentPath,Date")] TripDetailEntity tripDetailEntity)
+        public async Task<IActionResult> Edit(int id, TripDetailViewModel tripDetailViewModel)
         {
-            if (id != tripDetailEntity.Id)
+            if (id != tripDetailViewModel.Id)
             {
                 return NotFound();
             }
@@ -87,12 +102,18 @@ namespace TimeRecord.Web.Controllers
             {
                 try
                 {
-                    _context.Update(tripDetailEntity);
+                    var path = tripDetailViewModel.AttachmentPath;
+                    if (tripDetailViewModel.VoucherFile != null)
+                    {
+                        path = await _imageHelper.UploadImageAsync(tripDetailViewModel.VoucherFile, "Vouchers");
+                    }
+
+                    _context.Update(_converterHelper.ToTripDetailEntity(tripDetailViewModel, path, false));
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TripDetailEntityExists(tripDetailEntity.Id))
+                    if (!TripDetailEntityExists(tripDetailViewModel.Id))
                     {
                         return NotFound();
                     }
@@ -103,7 +124,7 @@ namespace TimeRecord.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(tripDetailEntity);
+            return View(tripDetailViewModel);
         }
 
         public async Task<IActionResult> Delete(int? id)

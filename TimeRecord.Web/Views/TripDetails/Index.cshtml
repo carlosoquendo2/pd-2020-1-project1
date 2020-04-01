@@ -6,6 +6,10 @@
 
 <h2>Trip Deteils</h2>
 
+<p>
+    <a asp-action="Create" class="btn btn-primary">New</a>
+</p>
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -54,13 +58,18 @@
                                     @Html.DisplayFor(modelItem => item.Comment)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.AttachmentPath)
+                                    @if (!string.IsNullOrEmpty(item.AttachmentPath))
+                                    {
+                                        <img src="@Url.Content(item.AttachmentPath)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                                    }
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Date)
                                 </td>
                                 <td>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class="glyphicon glyphicon-align-justify"></i></a>
+                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="glyphicon glyphicon-trash"></i></button>
                                 </td>
                             </tr>
                         }

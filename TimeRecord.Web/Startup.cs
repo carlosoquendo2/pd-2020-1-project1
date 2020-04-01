@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TimeRecord.Web.Helpers;
 using TimeRecord.Web.Data;
 
 namespace TimeRecord.Web
@@ -35,6 +36,9 @@ namespace TimeRecord.Web
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("TimeRecordConnection"));
             });
+
+            services.AddScoped<IImageHelper, ImageHelper>();
+            services.AddScoped<IConverterHelper, ConverterHelper>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

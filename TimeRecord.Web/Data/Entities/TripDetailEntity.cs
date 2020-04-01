@@ -27,7 +27,7 @@ namespace TimeRecord.Web.Data.Entities
         [MaxLength(255, ErrorMessage = "The field {0} can not have more than {1} characters.")]
         public string Comment { get; set; }
 
-        [Display(Name = "Logo")]
+        [Display(Name = "Voucher")]
         public string AttachmentPath { get; set; }
 
         [DataType(DataType.DateTime)]
