@@ -14,7 +14,7 @@ namespace TimeRecord.Web.Helpers
                 ExpenseType = model.ExpenseType,
                 Currency = model.Currency,
                 Comment = model.Comment,
-                Date = model.Date,
+                Date = model.Date.ToUniversalTime(),
                 AttachmentPath = path,
                 Name = model.Name
             };
