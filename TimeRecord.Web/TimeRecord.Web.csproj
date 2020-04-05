@@ -14,4 +14,8 @@
     <Folder Include="wwwroot\images\Vouchers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TimeRecord.Common\TimeRecord.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -38,6 +38,9 @@ namespace TimeRecord.Web.Data.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime EndDateLocal => EndDate.ToLocalTime();
 
+        [Display(Name = "User")]
+        public UserEntity User { get; set; }
+
         public ICollection<TripDetailEntity> TripDetails { get; set; }
     }
 }
