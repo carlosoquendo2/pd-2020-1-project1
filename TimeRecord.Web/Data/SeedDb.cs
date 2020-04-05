@@ -24,6 +24,7 @@ namespace TimeRecord.Web.Data
             await _context.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
             await CheckUserAsync("1010", "Carlos", "Oquendo", "carlosoquendo2@hotmail.com", "3010000000", "Avenida siempre viva", UserType.Admin);
+            await CheckUserAsync("1010", "Felipe", "Escobar", "carlosoquendo1206@gmail.com", "3010000000", "Avenida siempre viva", UserType.User);
             await CheckUsersAsync();
         }
 
@@ -33,12 +34,6 @@ namespace TimeRecord.Web.Data
             {
                 await CheckUserAsync($"100{i}", "User", $"{i}", $"user{i}@yopmail.com", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
             }
-        }
-
-        private async Task CheckRolesAsync()
-        {
-            await _userHelper.CheckRoleAsync(UserType.Admin.ToString());
-            await _userHelper.CheckRoleAsync(UserType.User.ToString());
         }
 
         private async Task<UserEntity> CheckUserAsync(
@@ -65,14 +60,20 @@ namespace TimeRecord.Web.Data
                     UserType = userType
                 };
 
-                await _userHelper.AddUserAsync(user, "123456789o");
+                await _userHelper.AddUserAsync(user, "123456");
                 await _userHelper.AddUserToRoleAsync(user, userType.ToString());
 
-                //var token = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
-                //await _userHelper.ConfirmEmailAsync(user, token);
+                var token = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
+                await _userHelper.ConfirmEmailAsync(user, token);
             }
 
             return user;
+        }
+
+        private async Task CheckRolesAsync()
+        {
+            await _userHelper.CheckRoleAsync(UserType.Admin.ToString());
+            await _userHelper.CheckRoleAsync(UserType.User.ToString());
         }
     }
 }

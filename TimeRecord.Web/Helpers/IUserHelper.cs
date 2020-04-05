@@ -3,6 +3,7 @@ using TimeRecord.Web.Data.Entities;
 using System.Threading.Tasks;
 using System;
 using TimeRecord.Common.Enums;
+using TimeRecord.Web.Models;
 
 namespace TimeRecord.Web.Helpers
 {
@@ -34,7 +35,7 @@ namespace TimeRecord.Web.Helpers
 
         Task<bool> IsUserInRoleAsync(UserEntity user, string roleName);
 
-        //Task<SignInResult> LoginAsync(LoginViewModel model);
+        Task<SignInResult> LoginAsync(LoginViewModel model);
 
         Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password);
 

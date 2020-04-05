@@ -5,6 +5,7 @@ using TimeRecord.Web.Data;
 using System;
 using TimeRecord.Common.Enums;
 using Microsoft.EntityFrameworkCore;
+using TimeRecord.Web.Models;
 
 namespace TimeRecord.Web.Helpers
 {
@@ -129,7 +130,7 @@ namespace TimeRecord.Web.Helpers
         {
             return await _userManager.IsInRoleAsync(user, roleName);
         }
-        /*
+
         public async Task<SignInResult> LoginAsync(LoginViewModel model)
         {
             return await _signInManager.PasswordSignInAsync(
@@ -138,11 +139,10 @@ namespace TimeRecord.Web.Helpers
                 model.RememberMe,
                 false);
         }
-        */
+
         public async Task LogoutAsync()
         {
             await _signInManager.SignOutAsync();
         }
-
     }
 }
