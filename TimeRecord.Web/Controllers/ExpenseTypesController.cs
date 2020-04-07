@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TimeRecord.Web.Data;
 using TimeRecord.Web.Data.Entities;
 
 namespace TimeRecord.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ExpenseTypesController : Controller
     {
         private readonly DataContext _context;
