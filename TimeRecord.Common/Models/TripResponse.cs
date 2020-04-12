@@ -17,6 +17,10 @@ namespace TimeRecord.Common.Models
 
         public ICollection<TripDetailResponse> TripDetails { get; set; }
 
+        public int TripDetailsCount { get => TripDetails == null ? 0 : TripDetails.Count; }
+
+        public bool Active { get => EndDate <= DateTime.Today.ToUniversalTime() ? true : false; }
+
         public UserResponse User { get; set; }
     }
 }
