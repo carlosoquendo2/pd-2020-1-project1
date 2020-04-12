@@ -1,6 +1,5 @@
 ﻿using Prism;
 using Prism.Ioc;
-using TimeRecord.Common.Services;
 using TimeRecord.Prism.ViewModels;
 using TimeRecord.Prism.Views;
 using Xamarin.Forms;
@@ -11,6 +10,11 @@ namespace TimeRecord.Prism
 {
     public partial class App
     {
+        /* 
+         * The Xamarin Forms XAML Previewer in Visual Studio uses System.Activator.CreateInstance.
+         * This imposes a limitation in which the App class must have a default constructor. 
+         * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
+         */
         public App() : this(null) { }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
@@ -19,14 +23,13 @@ namespace TimeRecord.Prism
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/TripsPage");
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<TripsPage, TripsPageViewModel>();
+            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
         }
     }
 }
