@@ -4,11 +4,11 @@
              xmlns:prism="http://prismlibrary.com"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="TimeRecord.Prism.Views.TripsPage"
+             x:Class="TimeRecord.Prism.Views.TripDetailPage"
              Title="{Binding Title}">
 
     <StackLayout Padding="5">
-        <CollectionView ItemsSource="{Binding Trips}">
+        <CollectionView ItemsSource="{Binding TripDetails}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"/>
             </CollectionView.ItemsLayout>
@@ -23,21 +23,25 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Label  Text="{Binding Name}" 
-                                FontAttributes="Bold"
-                                FontSize="Large"
-                                LineBreakMode="TailTruncation" />
+                        <ffimageloading:CachedImage Grid.Column="0"
+                                                        Aspect="AspectFit"
+                                                        Source="{Binding AttachmentFullPath}" 
+                                                        CacheDuration= "50"
+                                                        Margin="5"
+                                                        RetryCount= "3"
+                                                        RetryDelay= "600"
+                                                        WidthRequest="100"/>
                         <StackLayout Grid.Column="1"
                                      VerticalOptions="Center">
-                            <Label Text="{Binding StartDate, StringFormat='{0:yyyy/MM/dd}'}"
+                            <Label Text="{Binding Name}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="Italic" 
                                    VerticalOptions="End" />
-                            <Label Text="{Binding EndDate, StringFormat='{0:yyyy/MM/dd}'}"
+                            <Label Text="{Binding Date, StringFormat='{0:yyyy/MM/dd}'}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="Italic" 
                                    VerticalOptions="End" />
-                            <Label Text="{Binding TripDetailsCount}"
+                            <Label Text="{Binding Expense Currency}"
                                    LineBreakMode="TailTruncation"
                                    FontAttributes="Italic" 
                                    VerticalOptions="End" />

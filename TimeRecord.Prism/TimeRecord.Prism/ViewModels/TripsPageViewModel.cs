@@ -8,18 +8,20 @@ namespace TimeRecord.Prism.ViewModels
 {
     public class TripsPageViewModel : ViewModelBase
     {
+        private readonly INavigationService _navegationService;
         private readonly IApiService _apiService;
-        private List<TripResponse> _trips;
+        private List<TripItemViewModel> _trips;
 
         public TripsPageViewModel(INavigationService navegationService, IApiService apiService)
             : base(navegationService)
         {
+            _navegationService = navegationService;
             _apiService = apiService;
             Title = "Trip ";
             LoadTripsAsync();
         }
 
-        public List<TripResponse> Trips
+        public List<TripItemViewModel> Trips
         {
             get => _trips;
             set => SetProperty(ref _trips, value);
@@ -42,7 +44,17 @@ namespace TimeRecord.Prism.ViewModels
                 return;
             }
 
-            Trips = (List<TripResponse>)response.Result;
+             var trips = (List<TripResponse>)response.Result;
+            Trips = trips.Select(t => new TripItemViewModel(_navegationService)
+            {
+                Id = t.Id,
+                User = t.User,
+                EndDate = t.EndDate,
+                StartDate = t.StartDate,
+                Name = t.Name,
+                TripDetails = t.TripDetails,
+                Description = t.Description
+            }).ToList();
         }
     }
 }
