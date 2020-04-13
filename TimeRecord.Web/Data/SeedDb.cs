@@ -104,7 +104,8 @@ namespace TimeRecord.Web.Data
                         Expense = 9.00,
                         Currency = CurrencyType.USD.ToString(),
                         Comment = "Trip detail comment 1",
-                        Date = DateTime.Today.ToUniversalTime()
+                        Date = DateTime.Today.ToUniversalTime(),
+                        AttachmentPath = $"~/images/Vouchers/VoucherTest.jpg"
                     },
                     new TripDetailEntity
                     {
@@ -113,7 +114,8 @@ namespace TimeRecord.Web.Data
                         Expense = 15.50,
                         Currency = CurrencyType.USD.ToString(),
                         Comment = "Trip detail comment 2",
-                        Date = DateTime.Today.ToUniversalTime()
+                        Date = DateTime.Today.ToUniversalTime(),
+                        AttachmentPath = $"~/images/Vouchers/VoucherTest.jpg"
                     },
                     new TripDetailEntity
                     {
@@ -122,7 +124,8 @@ namespace TimeRecord.Web.Data
                         Expense = 10.20,
                         Currency = CurrencyType.USD.ToString(),
                         Comment = "Trip detail comment 3",
-                        Date = DateTime.Today.ToUniversalTime()
+                        Date = DateTime.Today.ToUniversalTime(),
+                        AttachmentPath = $"~/images/Vouchers/VoucherTest.jpg"
                     }
                 }
             });

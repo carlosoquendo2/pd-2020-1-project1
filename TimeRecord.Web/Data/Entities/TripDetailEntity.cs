@@ -30,6 +30,11 @@ namespace TimeRecord.Web.Data.Entities
         [Display(Name = "Voucher")]
         public string AttachmentPath { get; set; }
 
+        [Display(Name = "Full path voucher")]
+        public string AttachmentFullPath => string.IsNullOrEmpty(AttachmentPath)
+                                        ? "https://timerecord.azurewebsites.net/images/Vouchers/VoucherTest.jpg"
+                                        : $"https://timerecord.azurewebsites.net{AttachmentPath.Substring(1)}";
+
         [DataType(DataType.DateTime)]
         [Display(Name = "Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]

@@ -58,9 +58,9 @@
                                     @Html.DisplayFor(modelItem => item.Comment)
                                 </td>
                                 <td>
-                                    @if (!string.IsNullOrEmpty(item.AttachmentPath))
+                                    @if (!string.IsNullOrEmpty(item.AttachmentFullPath))
                                     {
-                                        <img src="@Url.Content(item.AttachmentPath)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                                        <img src="@Url.Content(item.AttachmentFullPath)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
                                     }
                                 </td>
                                 <td>
