@@ -10,15 +10,17 @@ namespace TimeRecord.Prism.ViewModels
 {
     public class TripDetailPageViewModel : ViewModelBase
     {
+        private readonly INavigationService _navegationService;
         private TripResponse _trip;
-        private ICollection<TripDetailResponse> _tripDetail;
+        private ICollection<TripDetailItemViewModel> _tripDetail;
         public TripDetailPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
+            _navegationService = navigationService;
             Title = "Trip Detail";
         }
 
-        public ICollection<TripDetailResponse> TripDetails
+        public ICollection<TripDetailItemViewModel> TripDetails
         {
             get => _tripDetail;
             set => SetProperty(ref _tripDetail, value);
@@ -29,7 +31,18 @@ namespace TimeRecord.Prism.ViewModels
             base.OnNavigatedTo(parameters);
             _trip = parameters.GetValue<TripResponse>("Trip");
             Title = _trip.Name;
-            TripDetails = _trip.TripDetails;
+            var tripDetail = (List<TripDetailResponse>)_trip.TripDetails;
+            TripDetails = tripDetail.Select(td => new TripDetailItemViewModel(_navegationService)
+            {
+                Id = td.Id,
+                ExpenseType = td.ExpenseType,
+                Name = td.Name,
+                Expense = td.Expense,
+                Currency = td.Currency,
+                Comment = td.Comment,
+                AttachmentPath = td.AttachmentPath,
+                Date = td.Date
+            }).ToList();
         }
     }
 }

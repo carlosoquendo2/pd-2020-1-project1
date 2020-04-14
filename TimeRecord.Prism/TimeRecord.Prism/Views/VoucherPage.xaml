@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TimeRecord.Prism.Views.VoucherPage"
+             Title="{Binding Title}">
+
+    <StackLayout Padding="5">
+
+        <ffimageloading:CachedImage Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    Source="{Binding TripDetail.AttachmentFullPath}" 
+                                    CacheDuration= "50"
+                                    Margin="5"
+                                    RetryCount= "3"
+                                    RetryDelay= "600"
+                                    WidthRequest="300"/>
+        <Label Text="{Binding TripDetail.Name}" 
+               FontAttributes="Bold"
+               FontSize="Title"
+               LineBreakMode="TailTruncation" 
+               HorizontalOptions="Center" />
+        <Label Text="{Binding TripDetail.ExpenseType.Name}"
+               LineBreakMode="TailTruncation"
+               FontAttributes="Italic" 
+               FontSize="Large"
+               VerticalOptions="End" />
+        <Label Text="{Binding TripDetail.Date, StringFormat='{0:yyyy/MM/dd}'}"
+               LineBreakMode="TailTruncation"
+               FontAttributes="Italic" 
+               FontSize="Large"
+               VerticalOptions="End" />
+        <Label Text="{Binding TextExpense}"
+               LineBreakMode="TailTruncation"
+               FontAttributes="Italic" 
+               FontSize="Large"
+               VerticalOptions="End" />
+        <Label Text="{Binding TripDetail.Comment}"
+               LineBreakMode="TailTruncation"
+               FontAttributes="Italic" 
+               FontSize="Large"
+               VerticalOptions="End" />
+    </StackLayout>
+
+</ContentPage>

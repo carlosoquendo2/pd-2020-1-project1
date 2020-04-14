@@ -44,7 +44,7 @@ namespace TimeRecord.Prism.ViewModels
                 return;
             }
 
-             var trips = (List<TripResponse>)response.Result;
+            var trips = (List<TripResponse>)response.Result;
             Trips = trips.Select(t => new TripItemViewModel(_navegationService)
             {
                 Id = t.Id,

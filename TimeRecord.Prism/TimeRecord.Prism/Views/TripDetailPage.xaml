@@ -16,7 +16,7 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SelectTripCommand}" />
+                            <TapGestureRecognizer Command="{Binding SelectTripDetailCommand}" />
                         </Grid.GestureRecognizers>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />

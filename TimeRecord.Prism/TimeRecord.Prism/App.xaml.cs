@@ -28,6 +28,7 @@ namespace TimeRecord.Prism
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<TripsPage, TripsPageViewModel>();
             containerRegistry.RegisterForNavigation<TripDetailPage, TripDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<VoucherPage, VoucherPageViewModel>();
         }
     }
 }
