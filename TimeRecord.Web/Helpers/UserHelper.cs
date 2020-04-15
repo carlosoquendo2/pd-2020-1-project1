@@ -6,6 +6,7 @@ using System;
 using TimeRecord.Common.Enums;
 using Microsoft.EntityFrameworkCore;
 using TimeRecord.Web.Models;
+using System.Linq;
 
 namespace TimeRecord.Web.Helpers
 {
@@ -57,7 +58,7 @@ namespace TimeRecord.Web.Helpers
         {
             return await _userManager.UpdateAsync(user);
         }
-        /*
+        
         public async Task<UserEntity> AddUserAsync(AddUserViewModel model, string path, UserType userType)
         {
             UserEntity userEntity = new UserEntity
@@ -69,7 +70,7 @@ namespace TimeRecord.Web.Helpers
                 LastName = model.LastName,
                 PicturePath = path,
                 PhoneNumber = model.PhoneNumber,
-                Team = await _context.Teams.FindAsync(model.TeamId),
+                Trips = await _context.Trips.Where(t => t.User.Id == model.Id.ToString()).ToListAsync(),
                 UserName = model.Username,
                 UserType = userType
             };
@@ -83,7 +84,7 @@ namespace TimeRecord.Web.Helpers
             UserEntity newUser = await GetUserAsync(model.Username);
             await AddUserToRoleAsync(newUser, userEntity.UserType.ToString());
             return newUser;
-        }*/
+        }
 
         public async Task<IdentityResult> AddUserAsync(UserEntity user, string password)
         {

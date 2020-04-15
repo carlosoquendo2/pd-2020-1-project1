@@ -21,7 +21,7 @@ namespace TimeRecord.Web.Helpers
 
         Task<IdentityResult> UpdateUserAsync(UserEntity user);
 
-        //Task<UserEntity> AddUserAsync(AddUserViewModel model, string path, UserType userType);
+        Task<UserEntity> AddUserAsync(AddUserViewModel model, string path, UserType userType);
 
         Task<UserEntity> GetUserAsync(string email);
 
