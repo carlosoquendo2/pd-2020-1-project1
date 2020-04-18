@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TimeRecord.Web.Models
 {
@@ -39,12 +34,5 @@ namespace TimeRecord.Web.Models
 
         [Display(Name = "Picture")]
         public string PicturePath { get; set; }
-
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
-        [Display(Name = "Favorite Team")]
-        [Range(1, int.MaxValue, ErrorMessage = "You must select a team.")]
-        public int TeamId { get; set; }
-        
-        public IEnumerable<SelectListItem> Trips { get; set; }
     }
 }

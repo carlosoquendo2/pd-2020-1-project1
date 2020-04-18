@@ -6,7 +6,6 @@ using System;
 using TimeRecord.Common.Enums;
 using Microsoft.EntityFrameworkCore;
 using TimeRecord.Web.Models;
-using System.Linq;
 
 namespace TimeRecord.Web.Helpers
 {
@@ -70,7 +69,6 @@ namespace TimeRecord.Web.Helpers
                 LastName = model.LastName,
                 PicturePath = path,
                 PhoneNumber = model.PhoneNumber,
-                Trips = await _context.Trips.Where(t => t.User.Id == model.Id.ToString()).ToListAsync(),
                 UserName = model.Username,
                 UserType = userType
             };

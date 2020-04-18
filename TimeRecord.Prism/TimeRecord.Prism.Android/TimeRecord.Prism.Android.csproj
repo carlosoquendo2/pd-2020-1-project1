@@ -68,6 +68,7 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1422" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\Localize.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +95,10 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TimeRecord.Common\TimeRecord.Common.csproj">
+      <Project>{7A96CBA0-D1C1-4944-8AFE-D628F0885249}</Project>
+      <Name>TimeRecord.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TimeRecord.Prism\TimeRecord.Prism.csproj">
       <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
       <Name>TimeRecord.Prism</Name>

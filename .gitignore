@@ -349,3 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /TimeRecord.Web/wwwroot/images/Vouchers
+/TimeRecord.Web/wwwroot/images/Users

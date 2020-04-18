@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
@@ -12,6 +13,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TimeRecord.Common\TimeRecord.Common.csproj" />
+    <ProjectReference Include="..\TimeRecord.Prism\TimeRecord.Prism\TimeRecord.Prism.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\Users\" />
   </ItemGroup>
 
 </Project>
