@@ -19,7 +19,7 @@ namespace TimeRecord.Prism
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/TripsPage");
+            await NavigationService.NavigateAsync("/TimeRecordMasterDetailPage/NavigationPage/TripsPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -28,7 +28,10 @@ namespace TimeRecord.Prism
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<TripsPage, TripsPageViewModel>();
             containerRegistry.RegisterForNavigation<TripDetailPage, TripDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<TimeRecordMasterDetailPage, TimeRecordMasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<VoucherPage, VoucherPageViewModel>();
+            containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
         }
     }
 }
