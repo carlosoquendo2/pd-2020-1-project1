@@ -217,7 +217,7 @@
     <value>Password confirm</value>
   </data>
   <data name="PasswordConfirmError1" xml:space="preserve">
-    <value>You must enter a password confirm.</value>
+    <value>You must enter a password confirm</value>
   </data>
   <data name="PasswordConfirmError2" xml:space="preserve">
     <value>The password and confirm does not match.</value>
@@ -227,5 +227,26 @@
   </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="AddTrip" xml:space="preserve">
+    <value>Add trip</value>
+  </data>
+  <data name="TripTitle" xml:space="preserve">
+    <value>Trip title</value>
+  </data>
+  <data name="TripTitlePlaceHolder" xml:space="preserve">
+    <value>Add trip title</value>
+  </data>
+  <data name="InitialTripDate" xml:space="preserve">
+    <value>Trip date</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="FinalTripDate" xml:space="preserve">
+    <value>Final trip date</value>
+  </data>
+  <data name="RegisterTrip" xml:space="preserve">
+    <value>Register Trip</value>
   </data>
 </root>

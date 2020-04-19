@@ -28,6 +28,8 @@ namespace TimeRecord.Web.Helpers
         ExpenseTypeResponse ToExpenseTypeResponse(ExpenseTypeEntity expenseTypeEntity);
 
         UserResponse ToUserResponse(UserEntity user);
+
+        TripEntity tripRequestToEntity(TripRequest tripRequest);
     }
 
 }

@@ -36,6 +36,7 @@ namespace TimeRecord.Prism
             containerRegistry.RegisterForNavigation<VoucherPage, VoucherPageViewModel>();
             containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddTripPage, AddTripPageViewModel>();
         }
     }
 }

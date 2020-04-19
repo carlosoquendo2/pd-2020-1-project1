@@ -164,5 +164,16 @@ namespace TimeRecord.Web.Helpers
                 UserType = user.UserType
             };
         }
+
+        public TripEntity tripRequestToEntity(TripRequest tripRequest)
+        {
+            return new TripEntity
+            {
+                Name = tripRequest.Name,
+                StartDate = tripRequest.StartDate,
+                EndDate = tripRequest.EndDate,
+                Description = tripRequest.Description
+            };
+        }
     }
 }

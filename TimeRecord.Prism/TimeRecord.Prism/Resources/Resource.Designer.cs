@@ -97,11 +97,29 @@ namespace TimeRecord.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add trip.
+        /// </summary>
+        public static string AddTrip {
+            get {
+                return ResourceManager.GetString("AddTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connection error.
         /// </summary>
         public static string ConnectionError {
             get {
                 return ResourceManager.GetString("ConnectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -196,6 +214,15 @@ namespace TimeRecord.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Final trip date.
+        /// </summary>
+        public static string FinalTripDate {
+            get {
+                return ResourceManager.GetString("FinalTripDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         public static string FirstName {
@@ -219,6 +246,15 @@ namespace TimeRecord.Prism.Resources {
         public static string FirstNamePlaceHolder {
             get {
                 return ResourceManager.GetString("FirstNamePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip date.
+        /// </summary>
+        public static string InitialTripDate {
+            get {
+                return ResourceManager.GetString("InitialTripDate", resourceCulture);
             }
         }
         
@@ -313,7 +349,7 @@ namespace TimeRecord.Prism.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You must enter a password confirm..
+        ///   Looks up a localized string similar to You must enter a password confirm.
         /// </summary>
         public static string PasswordConfirmError1 {
             get {
@@ -390,6 +426,33 @@ namespace TimeRecord.Prism.Resources {
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register Trip.
+        /// </summary>
+        public static string RegisterTrip {
+            get {
+                return ResourceManager.GetString("RegisterTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip title.
+        /// </summary>
+        public static string TripTitle {
+            get {
+                return ResourceManager.GetString("TripTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add trip title.
+        /// </summary>
+        public static string TripTitlePlaceHolder {
+            get {
+                return ResourceManager.GetString("TripTitlePlaceHolder", resourceCulture);
             }
         }
     }

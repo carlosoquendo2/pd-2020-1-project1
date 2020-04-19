@@ -127,7 +127,7 @@
     <value>Entra tu email...</value>
   </data>
   <data name="EmailError" xml:space="preserve">
-    <value>Debes ingresar un correo electrónico...</value>
+    <value>Debes ingresar un correo electrónico.</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contraseña</value>
@@ -208,7 +208,7 @@
     <value>Equipo favorito</value>
   </data>
   <data name="FavoriteTeamError" xml:space="preserve">
-    <value>Debes seleccionar un equipo favorito</value>
+    <value>Debes seleccionar un equipo favorito.</value>
   </data>
   <data name="FavoriteTeamPlaceHolder" xml:space="preserve">
     <value>Selecciona tu equipo favorito...</value>
@@ -227,5 +227,26 @@
   </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="AddTrip" xml:space="preserve">
+    <value>Agregar viaje</value>
+  </data>
+  <data name="TripTitle" xml:space="preserve">
+    <value>Título del viaje</value>
+  </data>
+  <data name="TripTitlePlaceHolder" xml:space="preserve">
+    <value>Ingrese título del viaje</value>
+  </data>
+  <data name="InitialTripDate" xml:space="preserve">
+    <value>Fecha del viaje</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="FinalTripDate" xml:space="preserve">
+    <value>Fecha final</value>
+  </data>
+  <data name="RegisterTrip" xml:space="preserve">
+    <value>Registrar viaje</value>
   </data>
 </root>

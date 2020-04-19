@@ -9,6 +9,15 @@
              Title="{Binding Title}">
 
     <StackLayout Padding="5">
+        <Image Grid.Column="0"
+               HeightRequest="32"
+               Margin="5"
+               Source="add"
+               WidthRequest="32">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
         <CollectionView ItemsSource="{Binding Trips}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"/>

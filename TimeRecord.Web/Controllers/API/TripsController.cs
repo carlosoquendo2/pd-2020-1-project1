@@ -21,11 +21,13 @@ namespace TimeRecord.Web.Controllers.API
     {
         private readonly DataContext _context;
         private readonly IConverterHelper _converterHelper;
+        private readonly IUserHelper _userHelper;
 
-        public TripsController(DataContext context, IConverterHelper converterHelper)
+        public TripsController(DataContext context, IConverterHelper converterHelper, IUserHelper userHelper)
         {
             _context = context;
             _converterHelper = converterHelper;
+            _userHelper = userHelper;
         }
 
         // GET: api/Trips/User
@@ -126,19 +128,30 @@ namespace TimeRecord.Web.Controllers.API
             return NoContent();
         }
 
-        // POST: api/Trips
+        // POST: api/Trips/Add
+        [ActionName("Add")]
         [HttpPost]
-        public async Task<IActionResult> PostTripEntity([FromBody] TripEntity tripEntity)
+        public async Task<IActionResult> PostTripEntity([FromBody] TripRequest tripRequest)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Trips.Add(tripEntity);
-            await _context.SaveChangesAsync();
+            TripEntity tripEntity = _converterHelper.tripRequestToEntity(tripRequest);
+            tripEntity.User = await _userHelper.GetUserAsync(tripRequest.UserEmail);
 
-            return CreatedAtAction("GetTripEntity", new { id = tripEntity.Id }, tripEntity);
+            _context.Trips.Add(tripEntity);
+            var newTrip = await _context.SaveChangesAsync();
+
+
+            //return CreatedAtAction("GetTripEntity", new { id = tripEntity.Id }, tripEntity);
+            return Ok(new Response
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Result = tripEntity
+            });
         }
 
         // DELETE: api/Trips/5

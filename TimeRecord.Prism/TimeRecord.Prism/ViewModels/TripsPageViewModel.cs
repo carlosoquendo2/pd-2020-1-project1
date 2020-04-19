@@ -9,6 +9,8 @@ using Prism.Navigation;
 using System.Collections.Generic;
 using System.Linq;
 using TimeRecord.Common.Helpers;
+using TimeRecord.Prism.Views;
+using Prism.Commands;
 
 namespace TimeRecord.Prism.ViewModels
 {
@@ -17,6 +19,7 @@ namespace TimeRecord.Prism.ViewModels
         private readonly INavigationService _navegationService;
         private readonly IApiService _apiService;
         private List<TripItemViewModel> _trips;
+        private DelegateCommand _registerCommand;
 
         public TripsPageViewModel(INavigationService navegationService, IApiService apiService)
             : base(navegationService)
@@ -30,6 +33,8 @@ namespace TimeRecord.Prism.ViewModels
                 LoadTripsAsync(user);
             }
         }
+
+        public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(AddTrip));
 
         public List<TripItemViewModel> Trips
         {
@@ -69,6 +74,11 @@ namespace TimeRecord.Prism.ViewModels
                 TripDetails = t.TripDetails,
                 Description = t.Description
             }).ToList();
+        }
+
+        private async void AddTrip()
+        {
+            await _navegationService.NavigateAsync(nameof(AddTripPage));
         }
     }
 }
