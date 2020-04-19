@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Prism.Navigation;
 using System.Collections.Generic;
 using System.Linq;
+using TimeRecord.Common.Helpers;
 
 namespace TimeRecord.Prism.ViewModels
 {
@@ -23,7 +24,11 @@ namespace TimeRecord.Prism.ViewModels
             _navegationService = navegationService;
             _apiService = apiService;
             Title = "Trip ";
-            LoadTripsAsync();
+            UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
+            if (user != null)
+            {
+                LoadTripsAsync(user);
+            }
         }
 
         public List<TripItemViewModel> Trips
@@ -32,18 +37,17 @@ namespace TimeRecord.Prism.ViewModels
             set => SetProperty(ref _trips, value);
         }
 
-        private async void LoadTripsAsync()
+        private async void LoadTripsAsync(UserResponse user)
         {
-            //UserResponse user = JsonConvert.DeserializeObject<UserResponse>(Settings.User);
-            //TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+            TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
 
             string url = App.Current.Resources["UrlAPI"].ToString();
             Response response = await _apiService.GetListAsync<TripResponse>(
                 url,
                 "/api",
-                "/Trips/User/16c8adf4-c128-4109-9d7f-f6c6c6313da4",
+                "/Trips/User/" + user.Id,
                 "bearer",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYXJsb3NvcXVlbmRvMTIwNkBnbWFpbC5jb20iLCJqdGkiOiJkODk0OGQ2Ni00ZjdiLTRhOGQtODEzNS1lZWIxZjU3MzIxMzkiLCJleHAiOjE1OTU3MzU2MDIsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6InVzZXJzIn0.scoZzCoY-56n_MdMGnIFjfTiTIUWfwTYtE78OWStTeA");
+                token.Token);
 
             if (!response.IsSuccess)
             {
