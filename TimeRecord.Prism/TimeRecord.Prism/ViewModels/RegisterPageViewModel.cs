@@ -62,6 +62,24 @@ namespace TimeRecord.Prism.ViewModels
             IsRunning = true;
             IsEnabled = false;
             string url = App.Current.Resources["UrlAPI"].ToString();
+
+            byte[] imageArray = null;
+
+            User.PictureArray = imageArray;
+            User.CultureInfo = Languages.Culture;
+
+            Response response = await _apiService.RegisterUserAsync(url, "/api", "/Account", User);
+            IsRunning = false;
+            IsEnabled = true;
+            /*
+            if (!response.IsSuccess)
+            {
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
+            }
+            */
+            await App.Current.MainPage.DisplayAlert(Languages.Ok, response.Message, Languages.Accept);
+            await _navigationService.GoBackAsync();
         }
 
         private async Task<bool> ValidateDataAsync()

@@ -15,6 +15,8 @@ namespace TimeRecord.Prism.Helpers
             DependencyService.Get<ILocalize>().SetLocale(ci);
         }
 
+        public static string Ok => Resource.Ok;
+
         public static string DocumentError => Resource.DocumentError;
 
         public static string FirstNameError => Resource.FirstNameError;

@@ -225,4 +225,7 @@
   <data name="PasswordConfirmPlaceHolder" xml:space="preserve">
     <value>Ingrese la confirmación de contraseña...</value>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
 </root>
