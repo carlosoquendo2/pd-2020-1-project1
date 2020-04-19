@@ -1,6 +1,7 @@
 ﻿using TimeRecord.Common.Models;
 using Prism.Commands;
 using Prism.Navigation;
+using TimeRecord.Common.Helpers;
 
 namespace TimeRecord.Prism.ViewModels
 {
@@ -18,6 +19,13 @@ namespace TimeRecord.Prism.ViewModels
 
         private async void SelectMenuAsync()
         {
+            if (PageName == "LoginPage" && Settings.IsLogin)
+            {
+                Settings.IsLogin = false;
+                Settings.User = null;
+                Settings.Token = null;
+            }
+
             await _navigationService.NavigateAsync($"/TimeRecordMasterDetailPage/NavigationPage/{PageName}");
         }
     }

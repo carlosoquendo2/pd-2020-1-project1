@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
+using Syncfusion.Licensing;
 using TimeRecord.Common.Services;
 using TimeRecord.Prism.ViewModels;
 using TimeRecord.Prism.Views;
@@ -17,8 +18,8 @@ namespace TimeRecord.Prism
 
         protected override async void OnInitialized()
         {
+            SyncfusionLicenseProvider.RegisterLicense("MjQyNzM4QDMxMzgyZTMxMmUzMGpxdWdIWDJDbmdjNFNXcElOdHc4WnIxK2w1bUdMVXBTZFlaWG9rUjlYa289");
             InitializeComponent();
-
             await NavigationService.NavigateAsync("/TimeRecordMasterDetailPage/NavigationPage/TripsPage");
         }
 

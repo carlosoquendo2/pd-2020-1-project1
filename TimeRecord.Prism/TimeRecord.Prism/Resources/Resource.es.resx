@@ -150,4 +150,13 @@
   <data name="Loading" xml:space="preserve">
     <value>Cargando...</value>
   </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Usuario o contraseña incorrecta</value>
+  </data>
+  <data name="ConnectionError" xml:space="preserve">
+    <value>Error de conexión</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
 </root>
