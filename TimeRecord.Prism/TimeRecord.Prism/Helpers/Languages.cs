@@ -14,6 +14,38 @@ namespace TimeRecord.Prism.Helpers
             Culture = ci.Name;
             DependencyService.Get<ILocalize>().SetLocale(ci);
         }
+
+        public static string DocumentError => Resource.DocumentError;
+
+        public static string FirstNameError => Resource.FirstNameError;
+
+        public static string LastNameError => Resource.LastNameError;
+
+        public static string Address => Resource.Address;
+
+        public static string AddressError => Resource.AddressError;
+
+        public static string AddressPlaceHolder => Resource.AddressPlaceHolder;
+
+        public static string Phone => Resource.Phone;
+
+        public static string PhoneError => Resource.PhoneError;
+
+        public static string PhonePlaceHolder => Resource.PhonePlaceHolder;
+
+        public static string FavoriteTeam => Resource.FavoriteTeam;
+
+        public static string FavoriteTeamError => Resource.FavoriteTeamError;
+
+        public static string FavoriteTeamPlaceHolder => Resource.FavoriteTeamPlaceHolder;
+
+        public static string PasswordConfirm => Resource.PasswordConfirm;
+
+        public static string PasswordConfirmError1 => Resource.PasswordConfirmError1;
+
+        public static string PasswordConfirmError2 => Resource.PasswordConfirmError2;
+
+        public static string PasswordConfirmPlaceHolder => Resource.PasswordConfirmPlaceHolder;
         
         public static string Logout => Resource.Logout;
 

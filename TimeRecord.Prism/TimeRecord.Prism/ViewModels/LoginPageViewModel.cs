@@ -9,6 +9,7 @@ using TimeRecord.Common.Helpers;
 using TimeRecord.Common.Models;
 using TimeRecord.Common.Services;
 using TimeRecord.Prism.Helpers;
+using TimeRecord.Prism.Views;
 
 namespace TimeRecord.Prism.ViewModels
 {
@@ -127,8 +128,9 @@ namespace TimeRecord.Prism.ViewModels
             Password = string.Empty;
         }
 
-        private void RegisterAsync()
+        private async void RegisterAsync()
         {
+            await _navigationService.NavigateAsync(nameof(RegisterPage));
         }
     }
 }

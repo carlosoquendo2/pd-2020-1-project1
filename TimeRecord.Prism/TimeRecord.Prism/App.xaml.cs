@@ -1,6 +1,7 @@
 ﻿using Prism;
 using Prism.Ioc;
 using Syncfusion.Licensing;
+using TimeRecord.Common.Helpers;
 using TimeRecord.Common.Services;
 using TimeRecord.Prism.ViewModels;
 using TimeRecord.Prism.Views;
@@ -26,8 +27,10 @@ namespace TimeRecord.Prism
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<IApiService, ApiService>();
+            containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<TripsPage, TripsPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
             containerRegistry.RegisterForNavigation<TripDetailPage, TripDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<TimeRecordMasterDetailPage, TimeRecordMasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<VoucherPage, VoucherPageViewModel>();
