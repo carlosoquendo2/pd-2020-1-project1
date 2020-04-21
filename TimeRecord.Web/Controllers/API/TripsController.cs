@@ -174,7 +174,7 @@ namespace TimeRecord.Web.Controllers.API
             string voucherPath = string.Empty;
             if (tripDetailRequest.VoucherArray != null && tripDetailRequest.VoucherArray.Length > 0)
             {
-                voucherPath = _imageHelper.UploadImage(tripDetailRequest.VoucherArray, "Voucher");
+                voucherPath = _imageHelper.UploadImage(tripDetailRequest.VoucherArray, "Vouchers");
             }
 
             TripDetailEntity tripDetailEntity = _converterHelper.tripDetailRequestToEntity(tripDetailRequest);

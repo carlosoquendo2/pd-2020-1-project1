@@ -101,12 +101,12 @@
             </ScrollView>
 
             <ffimageloading:CachedImage Aspect="AspectFit"
-                                                Source="{Binding Image}" 
-                                                CacheDuration= "50"
-                                                HeightRequest="150"
-                                                Margin="5"
-                                                RetryCount= "3"
-                                                RetryDelay= "600">
+                                        Source="{Binding Image}" 
+                                        CacheDuration= "50"
+                                        Margin="5"
+                                        RetryCount= "3"
+                                        RetryDelay= "600"
+                                        WidthRequest="100">
                 <ffimageloading:CachedImage.Transformations>
                     <fftransformations:CircleTransformation />
                 </ffimageloading:CachedImage.Transformations>

@@ -34,13 +34,13 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <ffimageloading:CachedImage Grid.Column="0"
-                                                        Aspect="AspectFit"
-                                                        Source="{Binding AttachmentFullPath}" 
-                                                        CacheDuration= "50"
-                                                        Margin="5"
-                                                        RetryCount= "3"
-                                                        RetryDelay= "600"
-                                                        WidthRequest="100"/>
+                                                    Aspect="AspectFit"
+                                                    Source="{Binding AttachmentFullPath}" 
+                                                    CacheDuration= "50"
+                                                    Margin="5"
+                                                    RetryCount= "3"
+                                                    RetryDelay= "600"
+                                                    WidthRequest="100"/>
                         <StackLayout Grid.Column="1"
                                      VerticalOptions="Center">
                             <Label Text="{Binding Name}"
