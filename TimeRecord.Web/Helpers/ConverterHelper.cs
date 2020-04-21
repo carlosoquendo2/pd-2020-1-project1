@@ -175,5 +175,17 @@ namespace TimeRecord.Web.Helpers
                 Description = tripRequest.Description
             };
         }
+
+        public TripDetailEntity tripDetailRequestToEntity(TripDetailRequest tripDetailRequest)
+        {
+            return new TripDetailEntity
+            {
+                Name = tripDetailRequest.Name,
+                Date = tripDetailRequest.Date,
+                Expense = tripDetailRequest.Expense,
+                Currency = tripDetailRequest.Currency,
+                Comment = tripDetailRequest.Comment
+            };
+        }
     }
 }

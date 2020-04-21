@@ -29,7 +29,7 @@ namespace TimeRecord.Web.Helpers
             MemoryStream stream = new MemoryStream(pictureArray);
             string guid = Guid.NewGuid().ToString();
             string file = $"{guid}.jpg";
-
+            
             try
             {
                 stream.Position = 0;

@@ -22,12 +22,19 @@ namespace TimeRecord.Web.Controllers.API
         private readonly DataContext _context;
         private readonly IConverterHelper _converterHelper;
         private readonly IUserHelper _userHelper;
+        private readonly IImageHelper _imageHelper;
 
-        public TripsController(DataContext context, IConverterHelper converterHelper, IUserHelper userHelper)
+        public TripsController(
+            DataContext context, 
+            IConverterHelper 
+            converterHelper, 
+            IUserHelper userHelper,
+            IImageHelper imageHelper)
         {
             _context = context;
             _converterHelper = converterHelper;
             _userHelper = userHelper;
+            _imageHelper = imageHelper;
         }
 
         // GET: api/Trips/User
@@ -154,25 +161,57 @@ namespace TimeRecord.Web.Controllers.API
             });
         }
 
-        // DELETE: api/Trips/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTripEntity([FromRoute] int id)
+        // POST: api/Trips/AddDetail
+        [ActionName("AddDetail")]
+        [HttpPost]
+        public async Task<IActionResult> PostTripDetailEntity([FromBody] TripDetailRequest tripDetailRequest)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            string voucherPath = string.Empty;
+            if (tripDetailRequest.VoucherArray != null && tripDetailRequest.VoucherArray.Length > 0)
+            {
+                voucherPath = _imageHelper.UploadImage(tripDetailRequest.VoucherArray, "Voucher");
+            }
+
+            TripDetailEntity tripDetailEntity = _converterHelper.tripDetailRequestToEntity(tripDetailRequest);
+            tripDetailEntity.Date = new DateTime(tripDetailRequest.Year, tripDetailRequest.Mounth, tripDetailRequest.Day, 0, 0, 0);
+            tripDetailEntity.AttachmentPath = voucherPath;
+            int id = int.Parse(tripDetailRequest.TripId);
             var tripEntity = await _context.Trips.FindAsync(id);
             if (tripEntity == null)
             {
                 return NotFound();
             }
+            else
+            {
+                tripDetailEntity.Trip = tripEntity;
+            }
+            id = int.Parse(tripDetailRequest.ExpenseTypeId);
+            var expenseType = await _context.ExpenseTypes.FindAsync(id);
+            if (expenseType == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                tripDetailEntity.ExpenseType = expenseType;
+            }
 
-            _context.Trips.Remove(tripEntity);
-            await _context.SaveChangesAsync();
+            _context.TripDetails.Add(tripDetailEntity);
+            var newTrip = await _context.SaveChangesAsync();
 
-            return Ok(tripEntity);
+            Response response = new Response
+            {
+                IsSuccess = true,
+                Message = "Success",
+                Result = tripDetailEntity
+            };
+
+            return Ok();
         }
 
         private bool TripEntityExists(int id)

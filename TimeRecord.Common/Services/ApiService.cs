@@ -183,6 +183,49 @@ namespace TimeRecord.Common.Services
             }
         }
 
+        public async Task<Response> RegisterTripDetailAsync(
+            string urlBase, 
+            string servicePrefix, 
+            string controller, 
+            string tokenType, 
+            string accessToken, 
+            TripDetailRequest tripDetailRequest)
+        {
+            try
+            {
+                string request = JsonConvert.SerializeObject(tripDetailRequest);
+                StringContent content = new StringContent(request, Encoding.UTF8, "application/json");
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                string url = $"{servicePrefix}{controller}";
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer
+                    };
+                }
+
+                Response obj = JsonConvert.DeserializeObject<Response>(answer);
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
+            }
+        }
+
         public async Task<Response> RegisterUserAsync(string urlBase, string servicePrefix, string controller, UserRequest userRequest)
         {
             try

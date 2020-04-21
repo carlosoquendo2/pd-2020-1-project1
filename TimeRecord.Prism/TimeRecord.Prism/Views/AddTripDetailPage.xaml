@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:i18n="clr-namespace:TimeRecord.Prism.Helpers"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TimeRecord.Prism.Views.AddTripDetailPage"
+             BackgroundColor="{StaticResource ColorBackgroud}"
+             Title="{Binding Title}">
+
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     Padding="5">
+            <ScrollView>
+                <StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="{i18n:Translate TripDetailName}"
+                               VerticalOptions="Center"/>
+                        <Entry Grid.Row="0"
+                               Grid.Column="1"
+                               Keyboard="Text"
+                               Placeholder="{i18n:Translate TripDetailName}"
+                               Text="{Binding TripDetail.Name}"/>
+
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="{i18n:Translate Currency}"
+                               VerticalOptions="Center"/>
+                        <Picker Grid.Row="1"
+                                Grid.Column="1"
+                                ItemsSource="{Binding CurrencyTypes}"
+                                SelectedItem="{Binding CurrencyType}"
+                                Title="{i18n:Translate Currency}">
+                        </Picker>
+
+                        <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Text="{i18n:Translate Expense}"
+                               VerticalOptions="Center"/>
+                        <Picker Grid.Row="2"
+                                Grid.Column="1"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding ExpenseTypes}"
+                                SelectedItem="{Binding ExpenseType}"
+                                Title="{i18n:Translate ExpenseType}">
+                        </Picker>
+
+                        <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Text="{i18n:Translate Expense}"
+                               VerticalOptions="Center"/>
+                        <Entry Grid.Row="3"
+                               Grid.Column="1"
+                               Keyboard="Numeric"
+                               Placeholder="{i18n:Translate Expense}"
+                               Text="{Binding TripDetail.Expense}"/>
+
+                        <Label Grid.Row="4"
+                               Grid.Column="0"
+                               Text="{i18n:Translate Description}"
+                               VerticalOptions="Center"/>
+                        <Editor Grid.Row="4"
+                                Grid.Column="1"
+                                Keyboard="Chat"
+                                Placeholder="{i18n:Translate Comment}"
+                                Text="{Binding TripDetail.Comment}"/>
+
+                        <Label Grid.Row="5"
+                               Grid.Column="0"
+                               Text="{i18n:Translate Date}"
+                               VerticalOptions="Center"/>
+                        <DatePicker Grid.Row="5" 
+                                    Grid.Column="1"
+                                    MinimumDate="{Binding MinDate}"
+                                    MaximumDate="{Binding MaxDate}"
+                                    Format="MM/dd/yyyy"
+                                    Date="{Binding Date}" />
+
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+
+            <ffimageloading:CachedImage Aspect="AspectFit"
+                                                Source="{Binding Image}" 
+                                                CacheDuration= "50"
+                                                HeightRequest="150"
+                                                Margin="5"
+                                                RetryCount= "3"
+                                                RetryDelay= "600">
+                <ffimageloading:CachedImage.Transformations>
+                    <fftransformations:CircleTransformation />
+                </ffimageloading:CachedImage.Transformations>
+                <ffimageloading:CachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                </ffimageloading:CachedImage.GestureRecognizers>
+            </ffimageloading:CachedImage>
+            <Button Command="{Binding RegisterCommand}"
+                    Text="{i18n:Translate RegisterTrip}"/>
+        </StackLayout>
+        <busyindicator:SfBusyIndicator AnimationType="Gear" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                	                   AbsoluteLayout.LayoutFlags="All"
+                	                   BackgroundColor="{StaticResource ColorAccent}"
+                	                   HorizontalOptions="Center"
+                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   IsVisible="{Binding IsRunning}"
+                	                   Title="{i18n:Translate Loading}"
+                	                   VerticalOptions="Center"
+                	                   ViewBoxWidth="80"
+                	                   ViewBoxHeight="80" />
+    </AbsoluteLayout>
+</ContentPage>

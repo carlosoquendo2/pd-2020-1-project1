@@ -30,6 +30,8 @@ namespace TimeRecord.Web.Helpers
         UserResponse ToUserResponse(UserEntity user);
 
         TripEntity tripRequestToEntity(TripRequest tripRequest);
+
+        TripDetailEntity tripDetailRequestToEntity(TripDetailRequest tripDetailRequest);
     }
 
 }

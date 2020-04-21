@@ -13,6 +13,8 @@ namespace TimeRecord.Common.Services
         
         Task<Response> RegisterUserAsync(string urlBase, string servicePrefix, string controller, UserRequest userRequest);
 
-        Task<Response> RegisterTripAsync(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, TripRequest userRequest);
+        Task<Response> RegisterTripAsync(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, TripRequest tripRequest);
+
+        Task<Response> RegisterTripDetailAsync(string urlBase, string servicePrefix, string controller, string tokenType, string accessToken, TripDetailRequest tripDetailRequest);
     }
 }

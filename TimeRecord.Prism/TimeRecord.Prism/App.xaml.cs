@@ -29,6 +29,7 @@ namespace TimeRecord.Prism
             containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.Register<IRegexHelper, RegexHelper>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.Register<IFilesHelper, FilesHelper>();
             containerRegistry.RegisterForNavigation<TripsPage, TripsPageViewModel>();
             containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
             containerRegistry.RegisterForNavigation<TripDetailPage, TripDetailPageViewModel>();
@@ -37,6 +38,7 @@ namespace TimeRecord.Prism
             containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<AddTripPage, AddTripPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddTripDetailPage, AddTripDetailPageViewModel>();
         }
     }
 }

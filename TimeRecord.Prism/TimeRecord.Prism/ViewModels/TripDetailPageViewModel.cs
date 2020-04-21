@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TimeRecord.Common.Models;
+using TimeRecord.Prism.Views;
 
 namespace TimeRecord.Prism.ViewModels
 {
@@ -13,12 +14,15 @@ namespace TimeRecord.Prism.ViewModels
         private readonly INavigationService _navegationService;
         private TripResponse _trip;
         private ICollection<TripDetailItemViewModel> _tripDetail;
+        private DelegateCommand _registerCommand;
         public TripDetailPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
             _navegationService = navigationService;
             Title = "Trip Detail";
         }
+
+        public DelegateCommand RegisterCommand => _registerCommand ?? (_registerCommand = new DelegateCommand(AddTripDetail));
 
         public ICollection<TripDetailItemViewModel> TripDetails
         {
@@ -43,6 +47,15 @@ namespace TimeRecord.Prism.ViewModels
                 AttachmentPath = td.AttachmentPath,
                 Date = td.Date
             }).ToList();
+        }
+
+        private async void AddTripDetail()
+        {
+            var parameters = new NavigationParameters
+            {
+                {"TripId", _trip.Id}
+            };
+            await _navegationService.NavigateAsync(nameof(AddTripDetailPage), parameters);
         }
     }
 }

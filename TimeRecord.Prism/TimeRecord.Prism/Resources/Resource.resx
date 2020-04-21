@@ -249,4 +249,37 @@
   <data name="RegisterTrip" xml:space="preserve">
     <value>Register Trip</value>
   </data>
+  <data name="AddVoucher" xml:space="preserve">
+    <value>Add voucher</value>
+  </data>
+  <data name="TripDetailName" xml:space="preserve">
+    <value>Voucher detail</value>
+  </data>
+  <data name="Expense" xml:space="preserve">
+    <value>Expense</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ExpenseType" xml:space="preserve">
+    <value>Expense type</value>
+  </data>
+  <data name="PictureSource" xml:space="preserve">
+    <value>Where do you want to take the picture?</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>From camera</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>From gallery</value>
+  </data>
 </root>

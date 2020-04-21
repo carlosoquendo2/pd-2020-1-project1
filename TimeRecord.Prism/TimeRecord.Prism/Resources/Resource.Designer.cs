@@ -106,11 +106,56 @@ namespace TimeRecord.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add voucher.
+        /// </summary>
+        public static string AddVoucher {
+            get {
+                return ResourceManager.GetString("AddVoucher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        public static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connection error.
         /// </summary>
         public static string ConnectionError {
             get {
                 return ResourceManager.GetString("ConnectionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currency.
+        /// </summary>
+        public static string Currency {
+            get {
+                return ResourceManager.GetString("Currency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
             }
         }
         
@@ -187,6 +232,24 @@ namespace TimeRecord.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expense.
+        /// </summary>
+        public static string Expense {
+            get {
+                return ResourceManager.GetString("Expense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expense type.
+        /// </summary>
+        public static string ExpenseType {
+            get {
+                return ResourceManager.GetString("ExpenseType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Favorite team.
         /// </summary>
         public static string FavoriteTeam {
@@ -246,6 +309,24 @@ namespace TimeRecord.Prism.Resources {
         public static string FirstNamePlaceHolder {
             get {
                 return ResourceManager.GetString("FirstNamePlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From camera.
+        /// </summary>
+        public static string FromCamera {
+            get {
+                return ResourceManager.GetString("FromCamera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From gallery.
+        /// </summary>
+        public static string FromGallery {
+            get {
+                return ResourceManager.GetString("FromGallery", resourceCulture);
             }
         }
         
@@ -421,6 +502,15 @@ namespace TimeRecord.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Where do you want to take the picture?.
+        /// </summary>
+        public static string PictureSource {
+            get {
+                return ResourceManager.GetString("PictureSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {
@@ -435,6 +525,15 @@ namespace TimeRecord.Prism.Resources {
         public static string RegisterTrip {
             get {
                 return ResourceManager.GetString("RegisterTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voucher detail.
+        /// </summary>
+        public static string TripDetailName {
+            get {
+                return ResourceManager.GetString("TripDetailName", resourceCulture);
             }
         }
         

@@ -14,7 +14,28 @@ namespace TimeRecord.Prism.Helpers
             Culture = ci.Name;
             DependencyService.Get<ILocalize>().SetLocale(ci);
         }
-        
+        public static string PictureSource => Resource.PictureSource;
+
+        public static string Cancel => Resource.Cancel;
+
+        public static string FromCamera => Resource.FromCamera;
+
+        public static string FromGallery => Resource.FromGallery;
+
+        public static string ExpenseType => Resource.ExpenseType;
+
+        public static string Date => Resource.Date;
+
+        public static string Comment => Resource.Comment;
+
+        public static string Currency => Resource.Currency;
+
+        public static string Expense => Resource.Expense;
+
+        public static string TripDetailName => Resource.TripDetailName;
+
+        public static string AddVoucher => Resource.AddVoucher;
+
         public static string RegisterTrip => Resource.RegisterTrip;
 
         public static string FinalTripDate => Resource.FinalTripDate;
